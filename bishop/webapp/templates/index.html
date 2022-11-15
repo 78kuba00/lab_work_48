@@ -10,11 +10,13 @@
 <body>
 <h1>Bishop</h1>
     {% for product in products %}
+        <a href="create"> <i class="fa fa-plus"></i> Create new </a>
         <h4>Наименование товара: {{ product.product }}</h4>
         <p>Категория: {{ product.get_status_display }}</p>
         <p>Описание товара: {{ product.details }}</p>
         <p>Баланс: {{ product.balance }}</p>
         <p>Цена: {{ product.price }} $</p>
+        <p><a href="/product/{{ product.id }}/">CLoser Look...</a></p>
         <hr>
     {% endfor %}
 
