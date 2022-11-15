@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bishop</title>
+</head>
+<body>
+<h1>Bishop</h1>
+    {% for product in products %}
+        <h4>Наименование товара: {{ product.product }}</h4>
+        <p>Категория: {{ product.get_status_display }}</p>
+        <p>Описание товара: {{ product.details }}</p>
+        <p>Баланс: {{ product.balance }}</p>
+        <p>Цена: {{ product.price }} $</p>
+        <hr>
+    {% endfor %}
+
+</body>
+</html>
