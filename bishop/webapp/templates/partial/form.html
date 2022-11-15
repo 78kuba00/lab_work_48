@@ -1,0 +1,40 @@
+{% csrf_token %}
+
+        <label class="form-label">Product:</label>
+        <input class="form-control" type="text" name="product" value="{{ product.product }}" required>
+        <br/>
+        <label class="form-label">DEtails:</label>
+        <textarea class="form-control" name="details">{{ product.details }}</textarea>
+        <br/>
+        <label class="form-label">Категория:</label>
+        <select class="form-select" name="status">
+            {% for value, status in statuses %}
+                <option
+                    {% if comment.status == value %}
+                        selected
+                    {% endif %}
+                        value="{{ value }}">{{ status }}</option>
+            {% endfor %}
+        </select>
+        <label class="form-label">Баланс:</label>
+        <select class="form-select" name="balance">
+            {% for value, balance in balances %}
+                <option
+                    {% if product.balance == value %}
+                    {% endif %}
+                        value="{{ value }}">{{ balance }}</option>
+            {% endfor %}
+        </select>
+        <label class="form-label">Цена:</label>
+        <select class="form-select" name="price">
+            {% for value, price in prices %}
+                <option
+                    {% if product.price == value %}
+                    {% endif %}
+                        value="{{ value }}">{{ price }}</option>
+            {% endfor %}
+        </select>
+
+        <br/>
+    <input class="btn btn-success" type="submit" value="{{ button_text }}">
+</html>

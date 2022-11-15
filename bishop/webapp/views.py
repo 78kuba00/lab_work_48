@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from webapp.models import Product, STATUS_CHOICES
 from django.urls import reverse
 from django.http import HttpResponseRedirect
@@ -49,3 +49,20 @@ def product_view(request, pk, *args, **kwargs):
     product = Product.objects.get(pk=pk)
     context = {'product': product}
     return render(request, 'view.html', context)
+
+def edit_view(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == "GET":
+        return render(request, 'edit.html', {'product': product, 'statuses': STATUS_CHOICES})
+    elif request.method == "POST":
+        product.product = request.POST.get('product')
+        product.details = request.POST.get('details')
+        product.balance = request.POST.get('balance')
+        product.price = request.POST.get('price')
+        product.status = request.POST.get('status')
+        product.save()
+        return redirect('index')
+
+def delete_view(request, pk):
+    Product.objects.filter(pk=pk).delete()
+    return redirect('index')

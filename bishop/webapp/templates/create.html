@@ -1,56 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create product</title>
-</head>
-<body>
-<h1>Create Product</h1>
+{% extends 'base.html' %}
+{% block content %}
+<h1>Create product</h1>
 <form action="" method="POST">
-    {% csrf_token %}
-    <a href="index"> <i class="fa fa-plus"></i> Create new </a>
-    <label>Категория:</label>
-    <select name="status">
-        {% for status in statuses %}
-            <option value="{{ value }}">{{ status }}</option>
-        {% endfor %}
-    </select>
-    <br/>
-    <label for="Наименование товара:">Наименование товара:</label>
-    <input type="text" name="product" required>
-    <br/>
-    <label for="Описание товара:">Описание товара:</label>
-    <input type="text" name="details">
-    <br/>
-
-    <label class="form-label">Баланс:</label>
-        <input type="text" name="balance">
-            {% for value, balance in balances %}
-                <option
-                    {% if product.balance == value %}
-                        selected
-                    {% endif %}
-                        value="{{ value }}">{{ blance }}</option>
-            {% endfor %}
-        </input>
-        <br/>
-
-    <label class="form-label">Цена:</label>
-        <input type="text" name="balance">
-            {% for value, price in prices %}
-                <option
-                    {% if product.price == value %}
-                        selected
-                    {% endif %}
-                        value="{{ value }}">{{ price }}</option>
-            {% endfor %}
-        </input>
-        <br/>
-
-    <button type="submit" class="btn btn-primary">CREATE</button>
+{% include 'partial/form.html' with button_text="Create"%}
+{#    <input class="btn btn-success" type="submit" value="Create">#}
 </form>
-</body>
-</html>
+{% endblock %}
