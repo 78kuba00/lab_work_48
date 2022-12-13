@@ -25,6 +25,9 @@
             </form>
         </div>
     </div>
-
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
     {% include "partial/product_list.html" %}
+
 {% endblock %}
