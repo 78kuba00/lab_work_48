@@ -1,26 +1,30 @@
 {% extends 'base.html' %}
-{% block content %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-</head>
-<body>
-<h1>Bishop</h1>
-    {% for product in products %}
-        <a href="create"> <i class="fa fa-plus"></i> Create new </a>
-        <h4>Наименование товара: {{ product.product }}
-{#            <span><a href="{% url 'edit' comment.pk %}"<i class="fa fa-edit"></i></a></span>#}
-{#            <span><a href="{% url 'delete' comment.pk %}"onclick="return confirm('Are you sure you want to delete?')"> <i class="fa fa-times red"></i> </a></span>#}
-        </h4>
-        <p>Категория: {{ product.get_status_display }}</p>
-        <p>Описание товара: {{ product.details }}</p>
-        <p>Баланс: {{ product.balance }}</p>
-        <p>Цена: {{ product.price }} $</p>
-        <p><a href="/product/{{ product.id }}/">CLoser Look...</a></p>
-        <hr>
-    {% endfor %}
+
+{% block nav %}
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Категории
+    </a>
+    <ul class="dropdown-menu">
+        {% for key, category in categories %}
+            <li><a class="dropdown-item" href="{% url 'product_by_category' key %}">{{ category }}</a></li>
+        {% endfor %}
+    </ul>
+    <form class="d-flex" role="search">
+        {{ search_form.search }}
+        <button class="btn btn-outline-success ms-2" type="submit">Найти</button>
+    </form>
 {% endblock %}
-</body>
-</html>
+
+
+{% block content %}
+    <h1>Список товаров</h1>
+    <div class="card">
+        <div class="card-body">
+            <form action="{% url 'product_add' %}" method="POST">
+                {% include 'partial/product_form.html' with button_text='Создать' %}
+            </form>
+        </div>
+    </div>
+
+    {% include "partial/product_list.html" %}
+{% endblock %}

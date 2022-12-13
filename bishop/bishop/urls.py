@@ -1,4 +1,4 @@
-"""bishop URL Configuration
+"""store URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -15,13 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from webapp.views import index_view, product_create, product_view, edit_view, delete_view
+from webapp.views import index_view, product_view, product_create_view, product_update_view, product_delete_view, \
+    product_by_category_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_view, name='index'),
-    path('create', product_create, name='create'),
-    path('product/<int:pk>/', product_view, name='view'),
-    path('edit/<int:pk>', edit_view, name='edit'),
-    path('delete/<int:pk>', delete_view, name='delete'),
+    path('product/<int:pk>/view/', product_view, name='product_view'),
+    path('product/<int:pk>/update/', product_update_view, name='product_update'),
+    path('product/<int:pk>/delete/', product_delete_view, name='product_delete'),
+    path('product/add/', product_create_view, name='product_add'),
+    path('product/<str:category>/', product_by_category_view, name='product_by_category'),
+
 ]

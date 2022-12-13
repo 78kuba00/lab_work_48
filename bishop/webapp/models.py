@@ -1,13 +1,17 @@
 from django.db import models
-STATUS_CHOICES = [('other', 'Other'), ('electronics', 'Electronics'), ('garden', 'Garden'), ('food', 'Food')]
 
+CATEGORIES_CHOICES = [("other", "Разное"), ("electronics", "Электроника"), ("books", "Книги"),
+                      ("stationery", "Канцтовары")]
+
+
+# Create your models here.
 class Product(models.Model):
-    product = models.CharField(max_length=100, null=False, blank=False, verbose_name="Наименование товара")
-    details = models.TextField(max_length=2000, null=True, blank=True, default="-", verbose_name="Описание товара")
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0], verbose_name="Статус")
-    balance = models.PositiveIntegerField(blank=True, null=True)
-    price = models.DecimalField(max_digits=7, decimal_places=2)
-
+    name = models.CharField(max_length=100, null=False, blank=False, verbose_name='Наименование товара')
+    description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Описание товара')
+    category = models.CharField(max_length=50, choices=CATEGORIES_CHOICES, default=CATEGORIES_CHOICES[0][0],
+                                verbose_name="Категория")
+    balance = models.PositiveIntegerField(verbose_name='Остаток')
+    price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="Стоимость")
 
     def __str__(self):
-        return f'{self.id}. {self.product}'
+        return f'{self.id}. {self.name}'
