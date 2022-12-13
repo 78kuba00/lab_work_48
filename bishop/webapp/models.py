@@ -15,3 +15,10 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.id}. {self.name}'
+
+class Basket(models.Model):
+    product = models.ForeignKey('webapp.Product', related_name='products', on_delete=models.CASCADE, verbose_name='Продукт')
+    quantity = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.id}. {self.product}'
