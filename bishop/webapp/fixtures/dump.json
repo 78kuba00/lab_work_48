@@ -1,12 +1,11 @@
-Tracking file by folder pattern:  migrations
 [
 {
   "model": "webapp.product",
   "pk": 1,
   "fields": {
-    "product": "LG Oled",
-    "details": "TV LG Oled 65\" 4k",
-    "status": "electronics",
+    "name": "LG Oled",
+    "description": null,
+    "category": "other",
     "balance": 4,
     "price": "100.00"
   }
@@ -15,9 +14,9 @@ Tracking file by folder pattern:  migrations
   "model": "webapp.product",
   "pk": 2,
   "fields": {
-    "product": "Hoe",
-    "details": "Garden Hoe 50 m",
-    "status": "garden",
+    "name": "Hoe",
+    "description": null,
+    "category": "other",
     "balance": 4,
     "price": "35.00"
   }
@@ -26,9 +25,9 @@ Tracking file by folder pattern:  migrations
   "model": "webapp.product",
   "pk": 3,
   "fields": {
-    "product": "Orange",
-    "details": "Turkish Orange from fields(Organic)",
-    "status": "food",
+    "name": "Orange",
+    "description": null,
+    "category": "other",
     "balance": 34,
     "price": "0.50"
   }
@@ -37,9 +36,9 @@ Tracking file by folder pattern:  migrations
   "model": "webapp.product",
   "pk": 4,
   "fields": {
-    "product": "Gasoline",
-    "details": "Diesel fuel",
-    "status": "other",
+    "name": "Gasoline",
+    "description": null,
+    "category": "other",
     "balance": 8,
     "price": "39.00"
   }
@@ -48,9 +47,9 @@ Tracking file by folder pattern:  migrations
   "model": "webapp.product",
   "pk": 5,
   "fields": {
-    "product": "McBook",
-    "details": "M1 chip 14\" 2020 1Tb",
-    "status": "electronics",
+    "name": "McBook",
+    "description": null,
+    "category": "other",
     "balance": 3,
     "price": "399.00"
   }
@@ -59,9 +58,9 @@ Tracking file by folder pattern:  migrations
   "model": "webapp.product",
   "pk": 6,
   "fields": {
-    "product": "Carpet",
-    "details": "Indian Carpet 19x19",
-    "status": "other",
+    "name": "Carpet",
+    "description": null,
+    "category": "other",
     "balance": 2,
     "price": "269.00"
   }
@@ -70,9 +69,9 @@ Tracking file by folder pattern:  migrations
   "model": "webapp.product",
   "pk": 7,
   "fields": {
-    "product": "Axe",
-    "details": "Garden axe for wood",
-    "status": "garden",
+    "name": "Axe",
+    "description": null,
+    "category": "other",
     "balance": 10,
     "price": "89.00"
   }
